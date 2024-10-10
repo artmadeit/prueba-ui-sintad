@@ -16,8 +16,8 @@ export class TipoDocumentoService {
         return this.http.post(this.baseUrl, tipoDocumento);
     }
 
-    findAll() {
-        return this.http.get<Page<TipoDocumento>>(this.baseUrl);
+    findAll(nombre?: string) {
+        return this.http.get<Page<TipoDocumento>>(this.baseUrl, { params: nombre ? { nombre } : {} });
     }
 
     findById(id: number) {

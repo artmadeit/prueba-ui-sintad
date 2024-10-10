@@ -16,8 +16,8 @@ export class TipoContribuyenteService {
         return this.http.post(this.baseUrl, tipoContribuyente);
     }
 
-    findAll() {
-        return this.http.get<Page<TipoContribuyente>>(this.baseUrl);
+    findAll(nombre?: string) {
+        return this.http.get<Page<TipoContribuyente>>(this.baseUrl, { params: nombre ? { nombre } : {} });
     }
 
     findById(id: number) {

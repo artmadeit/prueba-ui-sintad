@@ -1,20 +1,39 @@
-<form>
+<form [formGroup]="entidadForm" (ngSubmit)="onSubmit()">
     <mat-dialog-content>
         <div class="stack">
-            <!-- TODO: Tipo de documento -->
+            <mat-form-field class="example-full-width">
+                <mat-label>Tipo de documento</mat-label>
+                <input type="text" matInput formControlName="tipoDocumento" [matAutocomplete]="tipoDocumentoAuto">
+                <mat-autocomplete #tipoDocumentoAuto="matAutocomplete" [displayWith]="showNombre">
+                    @for (option of tipoDocumentos$ | async; track option) {
+                    <mat-option [value]="option">{{option.nombre}}</mat-option>
+                    }
+                </mat-autocomplete>
+            </mat-form-field>
             <mat-form-field>
                 <mat-label>Nro de documento</mat-label>
-                <input matInput />
+                <input matInput formControlName="nroDocumento" />
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Razón social</mat-label>
-                <input matInput />
+                <input matInput formControlName="razonSocial" />
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Nombre comercial</mat-label>
-                <input matInput />
+                <input matInput formControlName="nombreComercial" />
             </mat-form-field>
-            <!-- TODO: Tipo de contribuyente -->
+            <mat-form-field class="example-full-width">
+                <mat-label>Tipo de contribuyente</mat-label>
+                <input type="text" matInput formControlName="tipoContribuyente" [matAutocomplete]="tipoContriAuto">
+                <mat-autocomplete #tipoContriAuto="matAutocomplete" [displayWith]="showNombre">
+                    @for (option of tipoContribuyentes$ | async; track option) {
+                    <mat-option [value]="option">{{option.nombre}}</mat-option>
+                    }
+                </mat-autocomplete>
+            </mat-form-field>
         </div>
     </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button type="submit">Guardar</button>
+    </mat-dialog-actions>
 </form>
