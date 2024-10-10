@@ -34,7 +34,11 @@ export class TipoContribuyenteListComponent {
   }
 
   showCreateModal() {
-    const dialogRef = this.dialog.open(TipoContribuyenteDialogComponent);
+    const dialogRef = this.dialog.open(TipoContribuyenteDialogComponent, {
+      data: {
+        nombre: ""
+      },
+    });
 
     dialogRef.afterClosed()
       .pipe(

@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { TipoContribuyente } from '../tipo-contribuyente';
+import { TipoContribuyenteForm } from '../tipo-contribuyente';
 
 @Component({
   selector: 'app-tipo-contribuyente-dialog',
@@ -18,7 +18,7 @@ export class TipoContribuyenteDialogComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    data: TipoContribuyente,
+    data: TipoContribuyenteForm,
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<TipoContribuyenteDialogComponent>) {
 
