@@ -1,0 +1,13 @@
+<form [formGroup]="tipoContribuyenteForm" (ngSubmit)="onSubmit()">
+    <mat-dialog-content>
+        <div class="stack">
+            <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="name" />
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button type="submit">Guardar</button>
+    </mat-dialog-actions>
+</form>

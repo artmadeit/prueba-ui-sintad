@@ -1,1 +1,16 @@
-<p>tipo-contribuyente-list works!</p>
+<div class="flex justify-between items-center">
+    <h1>Tipo de contribuyentes</h1>
+    <button mat-fab extended (click)="showCreateModal()">
+        <mat-icon>add</mat-icon>
+        Agregar
+    </button>
+</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.tipoDocumento.nombre }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
