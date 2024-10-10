@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) {
     this.loginForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       password: ['', [Validators.required]]
@@ -23,8 +24,17 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
-    this.router.navigateByUrl("/portal/entidades");
+    this.authService.login(this.loginForm.value)
+      .subscribe({
+        next: (response) => {
+          this.authService.saveToken(response.token);
+          this.router.navigateByUrl("/portal/entidades");
+          console.log('Login successful!');
+        },
+        error: (error) => {
+          console.error('Login failed!', error);
+        }
+      });
   }
-
 }
+

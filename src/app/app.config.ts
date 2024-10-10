@@ -6,8 +6,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { tokenGetter } from './token-getter';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { JwtModule } from "@auth0/angular-jwt";
-
-const baseUrl = "localhost:3000"
+import { environment } from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,8 +17,8 @@ export const appConfig: ApplicationConfig = {
       JwtModule.forRoot({
         config: {
           tokenGetter: tokenGetter,
-          allowedDomains: [baseUrl],
-          disallowedRoutes: [`${baseUrl}/auth/login`],
+          allowedDomains: [environment.apiUrl],
+          disallowedRoutes: [`${environment.apiUrl}/auth/login`],
         },
       }),
     ),
