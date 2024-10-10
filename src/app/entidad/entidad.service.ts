@@ -13,7 +13,7 @@ export class EntidadService {
     constructor(private http: HttpClient) { }
 
     create(entidad: Entidad) {
-        return this.http.post(this.baseUrl, entidad);
+        return this.http.post(this.baseUrl, this.toRequest(entidad));
     }
 
     findAll() {
@@ -25,7 +25,20 @@ export class EntidadService {
     }
 
     edit(id: number, entidad: Entidad) {
-        return this.http.put(`${this.baseUrl}/${id}`, entidad);
+        return this.http.put(`${this.baseUrl}/${id}`, this.toRequest(entidad));
+    }
+
+    
+    private toRequest(entidad: Entidad): any {
+        return {
+            tipoDocumentoId: entidad.tipoDocumento.id,
+            nroDocumento: entidad.nroDocumento,
+            razonSocial: entidad.razonSocial,
+            nombreComercial: entidad.nombreComercial,
+            tipoContribuyenteId: entidad.tipoContribuyente.id,
+            telefono: entidad.telefono,
+            direccion: entidad.direccion,
+        };
     }
 
     remove(id: number) {
