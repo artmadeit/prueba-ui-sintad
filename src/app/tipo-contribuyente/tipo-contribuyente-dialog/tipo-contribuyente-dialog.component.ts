@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { TipoContribuyente } from '../tipo-contribuyente';
 
 @Component({
   selector: 'app-tipo-contribuyente-dialog',
@@ -15,9 +16,14 @@ import { MatInputModule } from '@angular/material/input';
 export class TipoContribuyenteDialogComponent {
   tipoContribuyenteForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private dialogRef: MatDialogRef<TipoContribuyenteDialogComponent>) {
+  constructor(
+    @Inject(MAT_DIALOG_DATA)
+    data: TipoContribuyente,
+    private formBuilder: FormBuilder,
+    private dialogRef: MatDialogRef<TipoContribuyenteDialogComponent>) {
+
     this.tipoContribuyenteForm = this.formBuilder.group({
-      nombre: ['', [Validators.required]],
+      nombre: [data.nombre, [Validators.required]],
     });
   }
 
