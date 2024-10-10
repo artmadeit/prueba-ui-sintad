@@ -32,7 +32,8 @@ export class LoginComponent {
           console.log('Login successful!');
         },
         error: (error) => {
-          console.error('Login failed!', error);
+          alert('Malas credenciales');
+          console.log(error)
         }
       });
   }

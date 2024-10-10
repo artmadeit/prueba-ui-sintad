@@ -1,9 +1,10 @@
-<nav>
+<nav class="flex justify-between items-center">
     <ul>
         <li><a routerLink="entidades">Entidades</a></li>
         <li><a routerLink="tipo-documentos">Tipo documentos</a></li>
         <li><a routerLink="tipo-contribuyentes">Tipo contribuyentes</a></li>
     </ul>
+    <button mat-flat-button (click)="logout()">Cerrar sesión</button>
 </nav>
 <main>
     <router-outlet></router-outlet>
