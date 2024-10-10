@@ -24,7 +24,7 @@ export class LoginComponent {
 
   onSubmit() {
     console.log(this.loginForm.value);
-    this.router.navigateByUrl("/entidades");
+    this.router.navigateByUrl("/portal/entidades");
   }
 
 }
