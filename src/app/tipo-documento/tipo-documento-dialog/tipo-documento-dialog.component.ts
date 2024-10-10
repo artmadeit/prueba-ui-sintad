@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { TipoDocumento } from '../tipo-documento';
+import { TipoDocumentoForm } from '../tipo-documento';
 
 @Component({
   selector: 'app-tipo-documento-dialog',
@@ -18,7 +18,7 @@ export class TipoDocumentoDialogComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    data: TipoDocumento,
+    data: TipoDocumentoForm,
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<TipoDocumentoDialogComponent>) {
 
