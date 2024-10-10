@@ -1,1 +1,30 @@
-<p>entidades works!</p>
+<h1>Entidades</h1>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="tipoDocumento">
+        <th mat-header-cell *matHeaderCellDef> Tipo de documento </th>
+        <td mat-cell *matCellDef="let element"> {{element.tipoDocumento.nombre }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nroDocumento">
+        <th mat-header-cell *matHeaderCellDef> Nro Documento </th>
+        <td mat-cell *matCellDef="let element"> {{element.nroDocumento}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="razonSocial">
+        <th mat-header-cell *matHeaderCellDef> Razón Social </th>
+        <td mat-cell *matCellDef="let element"> {{element.razonSocial}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombreComercial">
+        <th mat-header-cell *matHeaderCellDef> Nombre comercial </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombreComercial}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tipoContribuyente">
+        <th mat-header-cell *matHeaderCellDef> Tipo contribuyente</th>
+        <td mat-cell *matCellDef="let element"> {{element.tipoContribuyente.nombre}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
