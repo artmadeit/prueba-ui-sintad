@@ -1,4 +1,10 @@
-<h1>Entidades</h1>
+<div class="flex justify-between">
+    <h1>Entidades</h1>
+    <button mat-fab extended>
+        <mat-icon>add</mat-icon>
+        Agregar
+    </button>
+</div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="tipoDocumento">
         <th mat-header-cell *matHeaderCellDef> Tipo de documento </th>
