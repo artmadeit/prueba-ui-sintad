@@ -27,4 +27,9 @@ export class TipoContribuyenteService {
     edit(id: number, tipoContribuyente: TipoContribuyente) {
         return this.http.put(`${this.baseUrl}/${id}`, tipoContribuyente);
     }
+
+    remove(id: number) {
+        return this.http.delete(`${this.baseUrl}/${id}`)
+    }
+
 }

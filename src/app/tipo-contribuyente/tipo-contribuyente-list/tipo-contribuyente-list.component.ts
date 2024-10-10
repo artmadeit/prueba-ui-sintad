@@ -18,7 +18,7 @@ import { TipoContribuyenteService } from '../tipo-contribuyente.service';
   styleUrl: './tipo-contribuyente-list.component.scss'
 })
 export class TipoContribuyenteListComponent {
-  displayedColumns: string[] = ['nombre'];
+  displayedColumns: string[] = ['nombre', 'actions'];
   dataSource$!: Observable<Page<TipoContribuyente>>;
 
   readonly dialog = inject(MatDialog);
@@ -34,9 +34,7 @@ export class TipoContribuyenteListComponent {
   }
 
   showCreateModal() {
-    const dialogRef = this.dialog.open(TipoContribuyenteDialogComponent, {
-      data: {},
-    });
+    const dialogRef = this.dialog.open(TipoContribuyenteDialogComponent);
 
     dialogRef.afterClosed()
       .pipe(
@@ -44,7 +42,29 @@ export class TipoContribuyenteListComponent {
         switchMap(result => this.tipoContribuyenteService.create(result)))
       .subscribe(result => {
         this.fetchData()
-        alert("Registrado correctamente:" + result)
+        alert("Registrado exitosamente")
+      });
+  }
+
+  remove(item: TipoContribuyente) {
+    this.tipoContribuyenteService.remove(item.id).subscribe(() => {
+      alert("Eliminado exitosamente")
+      this.fetchData()
+    })
+  }
+
+  showEditModal(tipoContribuyente: TipoContribuyente) {
+    const dialogRef = this.dialog.open(TipoContribuyenteDialogComponent, {
+      data: tipoContribuyente,
+    });
+
+    dialogRef.afterClosed()
+      .pipe(
+        filter(result => Boolean(result)),
+        switchMap(result => this.tipoContribuyenteService.edit(tipoContribuyente.id, result)))
+      .subscribe(result => {
+        this.fetchData()
+        alert("Editado exitosamente")
       });
   }
 }
