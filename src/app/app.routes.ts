@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { EntidadesComponent } from './entidades/entidades.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
-    // { path: 'second-component', component: SecondComponent },
+    { path: 'entidades', component: EntidadesComponent },
     { path: '',   redirectTo: '/login', pathMatch: 'full' },
 ];
