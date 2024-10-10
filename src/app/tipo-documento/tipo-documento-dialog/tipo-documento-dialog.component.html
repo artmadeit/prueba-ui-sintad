@@ -1,0 +1,21 @@
+<form [formGroup]="tipoDocumentoForm" (ngSubmit)="onSubmit()">
+    <mat-dialog-content>
+        <div class="stack">
+            <mat-form-field>
+                <mat-label>Código</mat-label>
+                <input matInput formControlName="codigo" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="nombre" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Descripción</mat-label>
+                <textarea matInput formControlName="descripcion"></textarea>
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button type="submit">Guardar</button>
+    </mat-dialog-actions>
+</form>
