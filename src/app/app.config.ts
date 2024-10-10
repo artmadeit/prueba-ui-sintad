@@ -17,7 +17,7 @@ export const appConfig: ApplicationConfig = {
       JwtModule.forRoot({
         config: {
           tokenGetter: tokenGetter,
-          allowedDomains: [environment.apiUrl],
+          allowedDomains: [environment.apiUrl.replace("http://", "")],
           disallowedRoutes: [`${environment.apiUrl}/auth/login`],
         },
       }),
