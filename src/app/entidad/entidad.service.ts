@@ -21,7 +21,7 @@ export class EntidadService {
     }
 
     findById(id: number) {
-        return this.http.get(`${this.baseUrl}/${id}`);
+        return this.http.get<Entidad>(`${this.baseUrl}/${id}`);
     }
 
     edit(id: number, entidad: Entidad) {

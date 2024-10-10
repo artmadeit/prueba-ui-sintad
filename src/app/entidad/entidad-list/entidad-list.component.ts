@@ -48,6 +48,8 @@ export class EntidadListComponent {
         razonSocial: "",
         nombreComercial: "",
         tipoContribuyente: "",
+        direccion: "",
+        telefono: ""
       },
       autoFocus: false,
       minWidth: "80vw"
@@ -63,21 +65,23 @@ export class EntidadListComponent {
       });
   }
 
-  showEditModal(entidad: Entidad) {
-    const dialogRef = this.dialog.open(EntidadDialogComponent, {
-      data: entidad,
-      autoFocus: false,
-      minWidth: "80vw"
-    });
-
-    dialogRef.afterClosed()
-      .pipe(
-        filter(result => Boolean(result)),
-        switchMap(result => this.entidadService.edit(entidad.id, result)))
-      .subscribe(result => {
-        this.fetchData()
-        alert("Editado exitosamente")
+  showEditModal(entidadRow: Entidad) {
+    this.entidadService.findById(entidadRow.id).subscribe(entidad => {
+      const dialogRef = this.dialog.open(EntidadDialogComponent, {
+        data: entidad,
+        autoFocus: false,
+        minWidth: "80vw"
       });
+
+      dialogRef.afterClosed()
+        .pipe(
+          filter(result => Boolean(result)),
+          switchMap(result => this.entidadService.edit(entidad.id, result)))
+        .subscribe(result => {
+          this.fetchData()
+          alert("Editado exitosamente")
+        });
+    })
   }
 
 }

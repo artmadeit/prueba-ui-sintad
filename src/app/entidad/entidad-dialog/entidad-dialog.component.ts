@@ -42,6 +42,8 @@ export class EntidadDialogComponent {
       razonSocial: [data.razonSocial, [Validators.required]],
       nombreComercial: [data.nombreComercial],
       tipoContribuyente: [data.tipoContribuyente, [Validators.required]],
+      telefono: [data.telefono],
+      direccion: [data.direccion],
     });
 
     this.tipoDocumentos$ = this.entidadForm.controls["tipoDocumento"].valueChanges.pipe(
