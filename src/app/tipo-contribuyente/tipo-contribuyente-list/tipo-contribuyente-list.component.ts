@@ -4,11 +4,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
-import { Observable } from 'rxjs';
+import { filter, Observable, switchMap } from 'rxjs';
+import { Page } from '../../common/page';
 import { TipoContribuyente } from '../tipo-contribuyente';
 import { TipoContribuyenteDialogComponent } from '../tipo-contribuyente-dialog/tipo-contribuyente-dialog.component';
 import { TipoContribuyenteService } from '../tipo-contribuyente.service';
-import { Page } from '../../common/page';
 
 @Component({
   selector: 'app-tipo-contribuyente-list',
@@ -23,9 +23,13 @@ export class TipoContribuyenteListComponent {
 
   readonly dialog = inject(MatDialog);
 
-  constructor(private tipoContribuyenteService: TipoContribuyenteService) {}
+  constructor(private tipoContribuyenteService: TipoContribuyenteService) { }
 
   ngOnInit(): void {
+    this.fetchData();
+  }
+
+  private fetchData() {
     this.dataSource$ = this.tipoContribuyenteService.findAll();
   }
 
@@ -34,10 +38,13 @@ export class TipoContribuyenteListComponent {
       data: {},
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result !== undefined) {
-        this.tipoContribuyenteService.create(result);
-      }
-    });  
+    dialogRef.afterClosed()
+      .pipe(
+        filter(result => Boolean(result)),
+        switchMap(result => this.tipoContribuyenteService.create(result)))
+      .subscribe(result => {
+        this.fetchData()
+        alert("Registrado correctamente:" + result)
+      });
   }
 }

@@ -17,7 +17,7 @@ export class TipoContribuyenteDialogComponent {
 
   constructor(private formBuilder: FormBuilder, private dialogRef: MatDialogRef<TipoContribuyenteDialogComponent>) {
     this.tipoContribuyenteForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
+      nombre: ['', [Validators.required]],
     });
   }
 
