@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { AuthService } from '../login/auth.service';
+import { AuthService } from '../auth/auth.service';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({

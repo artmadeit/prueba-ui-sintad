@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './auth/login/login.component';
 import { EntidadListComponent } from './entidad/entidad-list/entidad-list.component';
 import { PortalComponent } from './portal/portal.component';
 import { TipoContribuyenteListComponent } from './tipo-contribuyente/tipo-contribuyente-list/tipo-contribuyente-list.component';
 import { TipoDocumentoListComponent } from './tipo-documento/tipo-documento-list/tipo-documento-list.component';
-import { AuthGuard } from './login/auth.guard';
+import { AuthGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
